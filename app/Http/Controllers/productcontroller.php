@@ -9,7 +9,7 @@ class productcontroller extends Controller
 {
     public function store(Request $request){ #create
         $request->validate([
-            'producto' => 'required|min:5',
+            'producto' => 'required|min:5', #campos requeridos y un minimo de caracteres
             'modelo' => 'required|min:5',
             'color' => 'required|min:5',
             'proveedor' => 'required|min:5'
@@ -32,12 +32,12 @@ class productcontroller extends Controller
         return view('products.index', ['product_read' => $product_read]);
     }
 
-    public function show($id){ #show
+    public function show($id){ #show mostrar la tabla
         $product_read = product::find($id);
         return view('products.edit', ['product_read' => $product_read]);
     }    
 
-    public function update(Request $request, $id){ #update
+    public function update(Request $request, $id){ #update actualizar la tabla
         $product_read = product::find($id);
 
         $product_read->producto = $request->producto;
